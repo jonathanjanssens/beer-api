@@ -13,5 +13,30 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+    return View::make('hello');
 });
+
+Route::group(array(
+        //'before' => 'auth',
+        'prefix' => 'v1'),
+        function() {
+
+            Route::get('/', function() {
+                return Redirect::to('v1/docs');
+            });
+
+            Route::resource('beers', 'BeerController');
+            Route::resource('reviews', 'ReviewController');
+            Route::resource('users', 'UserController');
+            Route::resource('breweries', 'BreweryController');
+
+});
+
+// Route::group(array(
+//         //'before' => 'auth',
+//         'prefix' => 'static'),
+//         function() {
+
+//             Route::controller('auth', 'AuthorisationController');
+
+// });

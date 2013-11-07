@@ -9,7 +9,8 @@ class BreweryController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$brewery = Brewery::all()->take(20);
+		return $brewery;
 	}
 
 	/**
@@ -30,7 +31,18 @@ class BreweryController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		if(is_numeric($id)){
+			$brewery = Brewery::find($id);
+		}
+		else {
+			$brewery = Brewery::where('slug', '=', $id)->first();
+		}
+		if(!$brewery) {
+			$error = new ErrorResponse(4040);
+			$error->globalMessage('The requested record does not exist in our database');
+			return $error->showError();
+		}
+		return $brewery;
 	}
 
 	/**

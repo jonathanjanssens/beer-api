@@ -31,7 +31,18 @@ class BeerController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		
+		if(is_numeric($id)){
+			$beer = Beer::find($id);
+		}
+		else {
+			$beer = Beer::where('slug', '=', $id)->first();
+		}
+		if(!$beer) {
+			$error = new ErrorResponse(4040);
+			$error->globalMessage('The requested record does not exist in our database');
+			return $error->showError();
+		}
+		return $beer;
 	}
 
 	/**

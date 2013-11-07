@@ -9,7 +9,8 @@ class ReviewController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$review = Review::all()->take(20);
+		return $review;
 	}
 
 	/**
@@ -30,7 +31,16 @@ class ReviewController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$review = Review::find($id);
+		if(!$review) {
+			$error = new ErrorResponse(4040);
+			$error->globalMessage('The requested item does not exist in our database');
+			if(!is_numeric($id)) {
+				$error->developerMessage('Review IDs must be numeric');
+			}
+			return $error->showError();
+		}
+		return $review;
 	}
 
 	/**
