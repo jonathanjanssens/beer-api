@@ -17,8 +17,8 @@ Route::get('/', function()
 });
 
 Route::group(array(
-        //'before' => 'auth',
-        'prefix' => 'v1'),
+            //'before' => 'auth',
+            'prefix' => 'v1'),
         function() {
 
             Route::get('/', function() {
@@ -32,11 +32,4 @@ Route::group(array(
 
 });
 
-// Route::group(array(
-//         //'before' => 'auth',
-//         'prefix' => 'static'),
-//         function() {
-
-//             Route::controller('auth', 'AuthorisationController');
-
-// });
+Route::controller('login', 'LoginController');

@@ -20,7 +20,7 @@ class BeerController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		
 	}
 
 	/**

@@ -1,0 +1,89 @@
+body {
+    font-family: 'Lato', 'Helvetica', sans-serif;
+    font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 300;
+}
+
+.beer-api {
+    background: #62CC98;
+}
+
+header {
+    background: #62CC98;
+    overflow: auto;
+    padding: 30px;
+    margin-bottom: 50px;
+}
+header h1 {
+    margin: 0;
+}
+
+.content {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.col-1-2 {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+}
+.pad-left {
+    padding-left: 30px;
+}
+.row:after {
+    display: table;
+    content: '';
+    clear: both;
+}
+
+.form-row {
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    background: #62CC98;
+    border: none;
+    padding: 10px;
+}
+input[type=text],
+input[type=password] {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+input[type=text]:focus,
+input[type=password]:focus {
+    outline: none;
+    border-color: #62CC98;
+}
+
+@media (max-width: 1160px) {
+    .content {
+        margin: 0 30px;
+    }
+}
+@media (max-width: 800px) {
+    .col-1-2 {
+        float: none;
+        width: 100%;
+    }
+    .pad-left {
+        padding: 0;
+    }
+}
