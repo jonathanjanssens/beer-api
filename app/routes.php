@@ -32,4 +32,11 @@ Route::group(array(
 
 });
 
+Route::group(array(
+            'prefix' => 'v1'),
+        function() {
+
+            Route::resource('auth', 'AuthenticationController');
+});
+
 Route::controller('login', 'LoginController');
