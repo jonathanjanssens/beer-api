@@ -21,6 +21,11 @@
                 {{ Form::password('password') }}
     
             </div>
+
+
+                {{ Form::hidden('public_token', Input::get('public_token')) }}
+                {{ Form::hidden('redirect_url', Input::get('redirect_url')) }}
+
     
             <div class="form-row">
     

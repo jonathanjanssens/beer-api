@@ -13,11 +13,12 @@
 
 Route::get('/', function()
 {
+    dd(md5('Beer API') . time());
     return View::make('hello');
 });
 
 Route::group(array(
-            //'before' => 'auth',
+            'before' => 'auth',
             'prefix' => 'v1'),
         function() {
 
@@ -37,6 +38,6 @@ Route::group(array(
         function() {
 
             Route::resource('auth', 'AuthenticationController');
-});
+            Route::controller('login', 'LoginController');
 
-Route::controller('login', 'LoginController');
+});

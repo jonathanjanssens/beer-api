@@ -18,7 +18,11 @@ class Responder
     public static function error($errorCode)
     {
         $error = Error::where('error_code', '=', $errorCode)->first();
-        // if no error found in db give generic error
+        if(!$error) {
+            self::$errorCode = 0;
+            self::$errorText = 'Generic error';
+            self::$httpResponse = 400;
+        }
         self::$errorCode = $error->error_code;
         self::$errorText = $error->error_text;
         self::$httpResponse = $error->http_response;

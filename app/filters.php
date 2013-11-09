@@ -35,7 +35,32 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::guest('login');
+    $userAccessToken = Input::get('access_token');// get sent access token
+    $appPrivateToken = Input::get('private_token');// get sent private token
+
+    if($userAccessToken == '' && $appPrivateToken == '') {
+        $error = Responder::error(4011);
+        $error->developerMessage('You must provide a user access token and your app private token.');
+        return $error->showError();
+    }
+    if($userAccessToken == '') {
+        $error = Responder::error(4011);
+        $error->developerMessage('You must provide a user access token.');
+        return $error->showError();
+    }
+    if($appPrivateToken == '') {
+        $error = Responder::error(4011);
+        $error->developerMessage('You must provide your app private token.');
+        return $error->showError();
+    }
+
+    $accessToken = AccessToken::where('token', '=', $userAccessToken)->first();
+    $authorisedApp = AuthorisedApp::where('private_token', '=', $appPrivateToken)->first();
+
+    if($authorisedApp['id'] != $accessToken['app_id']) { // check app id matches 
+        $error = Responder::error(4030);
+        return $error->showError();
+    }
 });
 
 
