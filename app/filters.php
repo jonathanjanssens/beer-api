@@ -39,17 +39,17 @@ Route::filter('auth', function()
     $appPrivateToken = Input::get('private_token');// get sent private token
 
     if($userAccessToken == '' && $appPrivateToken == '') {
-        $error = Responder::error(4011);
+        $error = Responder::error(4030);
         $error->developerMessage('You must provide a user access token and your app private token.');
         return $error->showError();
     }
     if($userAccessToken == '') {
-        $error = Responder::error(4011);
+        $error = Responder::error(4030);
         $error->developerMessage('You must provide a user access token.');
         return $error->showError();
     }
     if($appPrivateToken == '') {
-        $error = Responder::error(4011);
+        $error = Responder::error(4030);
         $error->developerMessage('You must provide your app private token.');
         return $error->showError();
     }
@@ -59,6 +59,7 @@ Route::filter('auth', function()
 
     if($authorisedApp['id'] != $accessToken['app_id']) { // check app id matches 
         $error = Responder::error(4030);
+        $error->developerMessage('You sent the wrong private key for your app.');
         return $error->showError();
     }
 });

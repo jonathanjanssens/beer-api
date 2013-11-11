@@ -38,6 +38,7 @@ Route::group(array(
         function() {
 
             Route::resource('auth', 'AuthenticationController');
+            Route::resource('docs', 'DocsController');
             Route::controller('login', 'LoginController');
 
 });
