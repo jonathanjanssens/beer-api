@@ -347,12 +347,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "9efdbcebea17506fb1cdb6b4687c23a6786d2e6b"
+                "reference": "c3448dc0a163becd5acb50199049996c53cade78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/9efdbcebea17506fb1cdb6b4687c23a6786d2e6b",
-                "reference": "9efdbcebea17506fb1cdb6b4687c23a6786d2e6b",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/c3448dc0a163becd5acb50199049996c53cade78",
+                "reference": "c3448dc0a163becd5acb50199049996c53cade78",
                 "shasum": ""
             },
             "require": {
@@ -378,7 +378,7 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan H. Wage",
+                    "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com",
                     "homepage": "http://www.jwage.com/",
                     "role": "Creator"
@@ -405,7 +405,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2013-09-26 21:18:07"
+            "time": "2013-11-12 12:38:29"
         },
         {
             "name": "doctrine/inflector",
@@ -677,12 +677,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "bbf77cc32c227c108c37bff5c2b592d484e30fa2"
+                "reference": "0810bd6ef5d610c61b728e82a7e02caef2cad342"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/bbf77cc32c227c108c37bff5c2b592d484e30fa2",
-                "reference": "bbf77cc32c227c108c37bff5c2b592d484e30fa2",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/0810bd6ef5d610c61b728e82a7e02caef2cad342",
+                "reference": "0810bd6ef5d610c61b728e82a7e02caef2cad342",
                 "shasum": ""
             },
             "require": {
@@ -782,7 +782,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2013-11-09 15:27:12"
+            "time": "2013-11-12 04:40:26"
         },
         {
             "name": "monolog/monolog",
@@ -790,12 +790,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "a5010756d905264ea2b3f7f27c7df22fb9a3bd8e"
+                "reference": "516447f91312924c63fafd8e6083f28013dd03d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/a5010756d905264ea2b3f7f27c7df22fb9a3bd8e",
-                "reference": "a5010756d905264ea2b3f7f27c7df22fb9a3bd8e",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/516447f91312924c63fafd8e6083f28013dd03d9",
+                "reference": "516447f91312924c63fafd8e6083f28013dd03d9",
                 "shasum": ""
             },
             "require": {
@@ -803,17 +803,21 @@
                 "psr/log": "~1.0"
             },
             "require-dev": {
+                "aws/aws-sdk-php": "~2.4.8",
                 "doctrine/couchdb": "dev-master",
                 "mlehner/gelf-php": "1.0.*",
                 "phpunit/phpunit": "~3.7.0",
-                "raven/raven": "0.5.*"
+                "raven/raven": "0.5.*",
+                "ruflin/elastica": "0.90.*"
             },
             "suggest": {
+                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
                 "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
                 "ext-mongo": "Allow sending log messages to a MongoDB server",
                 "mlehner/gelf-php": "Allow sending log messages to a GrayLog2 server",
-                "raven/raven": "Allow sending log messages to a Sentry server"
+                "raven/raven": "Allow sending log messages to a Sentry server",
+                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
             },
             "type": "library",
             "extra": {
@@ -845,7 +849,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2013-11-04 08:48:35"
+            "time": "2013-11-11 22:14:57"
         },
         {
             "name": "nesbot/carbon",
@@ -992,12 +996,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nrk/predis.git",
-                "reference": "62f8730f1aa0e6a6879eaee73819a3a0b57f8dab"
+                "reference": "b1a51b2ef900c28f389cc7ba498f3698b9749ce6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nrk/predis/zipball/62f8730f1aa0e6a6879eaee73819a3a0b57f8dab",
-                "reference": "62f8730f1aa0e6a6879eaee73819a3a0b57f8dab",
+                "url": "https://api.github.com/repos/nrk/predis/zipball/b1a51b2ef900c28f389cc7ba498f3698b9749ce6",
+                "reference": "b1a51b2ef900c28f389cc7ba498f3698b9749ce6",
                 "shasum": ""
             },
             "require": {
@@ -1031,7 +1035,7 @@
                 "predis",
                 "redis"
             ],
-            "time": "2013-11-07 17:48:53"
+            "time": "2013-11-09 19:00:33"
         },
         {
             "name": "psr/log",
@@ -1182,12 +1186,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "f880062d56edefb25b36f2defa65aafe65959dc7"
+                "reference": "38f924338419db1ce147ef39fff1265ee64faa81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/f880062d56edefb25b36f2defa65aafe65959dc7",
-                "reference": "f880062d56edefb25b36f2defa65aafe65959dc7",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/38f924338419db1ce147ef39fff1265ee64faa81",
+                "reference": "38f924338419db1ce147ef39fff1265ee64faa81",
                 "shasum": ""
             },
             "require": {
@@ -1226,7 +1230,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2013-09-25 06:04:15"
+            "time": "2013-11-05 15:14:13"
         },
         {
             "name": "symfony/css-selector",
