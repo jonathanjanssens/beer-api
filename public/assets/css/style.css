@@ -18,6 +18,10 @@ h6 {
     font-weight: 300;
 }
 
+p {
+    color: #797979;
+}
+
 a {
     color: #62CC98;
     text-decoration: none;
@@ -28,6 +32,10 @@ a:hover {
 
 .beer-api {
     background: #62CC98;
+}
+
+code {
+    background: #fafafa;
 }
 
 /*
@@ -91,11 +99,14 @@ th {
     border-bottom: 1px solid #eee;
     padding: 10px 0;
 }
+td {
+    padding: 7px;
+}
 thead tr:hover {
     background: white;
 }
 tr:hover {
-    background: #FAFAFA;
+    background: #fafafa;
 }
 
 /*

@@ -65,10 +65,11 @@ class BeerController extends \BaseController {
 			$beer = Beer::where('slug', '=', $id)->first();
 		}
 		if(!$beer) {
-			$error = new ErrorResponse(4040);
+			$error = Responder::error(4040);
 			$error->globalMessage('The requested record does not exist in our database');
 			return $error->showError();
 		}
+		$beer['thumbnail'] = URL::to('/') . '/assets/uploads/' . $beer['thumbnail'];
 		return $beer;
 	}
 
@@ -80,7 +81,28 @@ class BeerController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		
+		if(is_numeric($id)){
+			$beer = Beer::find($id);
+		}
+		else {
+			$beer = Beer::where('slug', '=', $id);
+		}
+		if(!$beer) {
+			$error = Responder::error(4040);
+			$error->globalMessage('The requested record does not exist in our database');
+			return $error->showError();
+		}
+		try {
+			$updates = Input::all();
+			if(isset($updates['thumbnail']) && $updates['thumbnail'] != '') {
+				$updates['thumbnail'] = $this->handleThumbnail(Input::get('thumbnail'));
+			}
+			$beer->update($updates);
+		}catch(Exception $e) {
+			$error = Responder::error(4005);
+			return $error->showError();
+		}
+		return Responder::success()->globalMessage('Beer updated successfully')->showSuccess();
 	}
 
 	/**

@@ -4,6 +4,10 @@
     
     <h1>REST API v1 Docs</h1>
 
+    <p>All resources apart from GET requests require that you send your secret application token (<code>private_token</code>) and authenticated user token (<code>access_token</code>) in the request headers.</p>
+
+    <p>For help in getting started creating your first app with the beer api, see our <a href="docs/getting-started">getting started guide</a>.</p>
+
     <h2>beers</h2>
     <table>
         <thead>

@@ -51,6 +51,9 @@ class DocsController extends \BaseController {
 		$data = array(
 			'doc' => $doc
 		);
+		if($doc->is_resource == 0) {
+			return View::make('docs.static', $data);
+		}
 		return View::make('docs.single', $data);
 	}
 

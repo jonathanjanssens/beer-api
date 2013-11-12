@@ -35,8 +35,8 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-    $userAccessToken = Input::get('access_token');// get sent access token
-    $appPrivateToken = Input::get('private_token');// get sent private token
+    $userAccessToken = Request::header('access_token');// get sent access token
+    $appPrivateToken = Request::header('private_token');// get sent private token
 
     if($userAccessToken == '' && $appPrivateToken == '') {
         $error = Responder::error(4030);

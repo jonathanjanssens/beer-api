@@ -13,7 +13,6 @@
 
 Route::get('/', function()
 {
-    dd(md5('Beer API') . time());
     return View::make('hello');
 });
 
