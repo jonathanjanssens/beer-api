@@ -9,8 +9,9 @@ class ReviewController extends \BaseController {
 	 */
 	public function index()
 	{
-		$review = Review::all()->take(20);
-		return $review;
+		(isset($_GET['limit']) && $_GET['limit'] < 201) ? $limit = $_GET['limit'] : $limit = 20;
+		(isset($_GET['offset'])) ? $offset = $_GET['offset'] : $offset = 0;
+		return Review::skip($offset)->take($limit)->get();
 	}
 
 	/**

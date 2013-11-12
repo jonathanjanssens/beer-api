@@ -9,8 +9,9 @@ class BreweryController extends \BaseController {
 	 */
 	public function index()
 	{
-		$brewery = Brewery::all()->take(20);
-		return $brewery;
+		(isset($_GET['limit']) && $_GET['limit'] < 201) ? $limit = $_GET['limit'] : $limit = 20;
+		(isset($_GET['offset'])) ? $offset = $_GET['offset'] : $offset = 0;
+		return Brewery::skip($offset)->take($limit)->get();
 	}
 
 	/**
