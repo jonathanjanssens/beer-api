@@ -14,7 +14,7 @@ class LoginController extends \BaseController {
             // if the user already has a record in access tokens for this app, refresh it
             //
             //
-            $app_id = AuthorisedApp::where('public_token', '=', Input::get('public_token'))->first()['id'];
+            $app_id = AuthorisedApp::where('public_token', '=', Input::get('public_token'))->first()->id;
 
             $existingToken = AccessToken::where('app_id', '=', $app_id)->where('user_id', '=', Auth::user()->id)->first();
             if($existingToken) {
