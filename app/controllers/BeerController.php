@@ -121,9 +121,7 @@ class BeerController extends \BaseController {
 			$beer = Beer::where('slug', '=', $id)->first();
 		}
 		if(!$beer) {
-			$error = Responder::error(4040);
-			$error->globalMessage('The requested record does not exist in our database');
-			return $error->showError();
+			return Responder::error(4040)->showError();
 		}
 		if($beer->delete()) {
 			$response = Responder::success();
