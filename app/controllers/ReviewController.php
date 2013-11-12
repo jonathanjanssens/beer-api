@@ -31,8 +31,8 @@ class ReviewController extends \BaseController {
 			$error = Responder::error(4040)->developerMessage('Beer does not exist, you cannot leave a beer for a beer not in our database');
 			return $error->showError();
 		}
-		$existingReview = Review::where('beer_id', '=', Input::get('beer_id'))->where('user_id', '=', User::auth()['id']);
-		if($existingReview) {
+		$existingReview = Review::where('beer_id', '=', Input::get('beer_id'))->where('user_id', '=', User::auth()['id'])->count();
+		if($existingReview != 0) {
 			return Responder::error(4004)->developerMessage('A user may only review each individual beer once')->userMessage('You have already reviewed this beer, you may only review each once')->showError();
 		}
 		$review = new Review;
@@ -51,6 +51,10 @@ class ReviewController extends \BaseController {
 			$newReview = Review::create($insertArray);
 			if($newReview) {
 				$response = Responder::success()->developerMessage('New record created successfully')->userMessage('New review added successfully.');
+				$user = User::find(User::auth()['id']);
+				$count = $user->reviews_count + 1;
+				$user->reviews_count = $count;
+				$user->save();
 				return $response->showSuccess();
 			}
 			else {
