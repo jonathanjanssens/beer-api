@@ -18,7 +18,7 @@ class LoginController extends \BaseController {
 
             $existingToken = AccessToken::where('app_id', '=', $app_id)->where('user_id', '=', Auth::user()->id)->first();
             if($existingToken) {
-                AccessToken::find($existingToken['id'])->delete();
+                AccessToken::find($existingToken->id)->delete();
             }
 
             $accessToken = new AccessToken;
