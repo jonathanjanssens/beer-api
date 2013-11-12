@@ -29,7 +29,6 @@ Route::group(array(
             Route::resource('reviews', 'ReviewController');
             Route::resource('users', 'UserController');
             Route::resource('breweries', 'BreweryController');
-
 });
 
 Route::group(array(

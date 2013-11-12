@@ -61,9 +61,7 @@ class BreweryController extends \BaseController {
 			$brewery = Brewery::where('slug', '=', $id)->first();
 		}
 		if(!$brewery) {
-			$error = new ErrorResponse(4040);
-			$error->globalMessage('The requested record does not exist in our database');
-			return $error->showError();
+			return Responder::error(4040)->globalMessage('The requested record does not exist in our database')->showError();
 		}
 		return $brewery;
 	}

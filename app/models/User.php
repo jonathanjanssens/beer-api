@@ -3,7 +3,7 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends Elegant implements UserInterface, RemindableInterface {
 
 	/**
 	 * The database table used by the model.
@@ -18,6 +18,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $hidden = array('password');
+
+	protected $guarded = array();  // Important
+
+    protected $rules = array(
+        'username' => 'required',
+        'password' => 'required',
+        'email' => 'required'
+    );
 
 	/**
 	 * Get the unique identifier for the user.
