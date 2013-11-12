@@ -6,7 +6,7 @@ class BreweryController extends \BaseController {
 	function __construct()
 	{
 		$this->beforeFilter('auth', array('except' => array('index', 'show')));
-		$this->beforeFilter('authorised', array('only' => array('update', 'delete')));
+		$this->beforeFilter('adminOnly', array('only' => array('destroy')));
 	}
 
 	/**
@@ -29,7 +29,7 @@ class BreweryController extends \BaseController {
 	public function store()
 	{
 		$brewery = new Brewery;
-		if(Brewery::where('name', '=', Input::get('name')) || Brewery::where('slug', '=', $this->slugify(Input::get('name')))) {
+		if(Brewery::where('name', '=', Input::get('name'))->get()->count() != 0 || Brewery::where('slug', '=', $this->slugify(Input::get('name')))->get()->count() != 0) {
 			return Responder::error(4004)->globalMessage('It looks like that brewery already exists')->showError();
 		}
 		if($brewery->validate(Input::all())) {

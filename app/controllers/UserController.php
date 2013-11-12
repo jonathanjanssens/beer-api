@@ -5,7 +5,7 @@ class UserController extends \BaseController {
 	function __construct()
 	{
 		$this->beforeFilter('auth', array('except' => array('index', 'show')));
-		$this->beforeFilter('authorised', array('only' => array('delete')));
+		$this->beforeFilter('adminOnly', array('only' => array('destroy')));
 	}
 
 	/**
@@ -45,7 +45,7 @@ class UserController extends \BaseController {
 				return $error->showError();
 			}
 		}
-		return Responder::error(4000)->developerMessage($brewery->errors())->showError();
+		return Responder::error(4000)->developerMessage($user->errors())->showError();
 	}
 
 	/**
@@ -76,6 +76,9 @@ class UserController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		if($id != User::auth()[$id]) {
+			return Responder::error(4031)->showError();
+		}
 		if(is_numeric($id)){
 			$user = User::find($id);
 		}

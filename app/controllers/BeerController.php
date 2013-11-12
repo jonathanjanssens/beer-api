@@ -5,7 +5,7 @@ class BeerController extends \BaseController {
 	function __construct()
 	{
 		$this->beforeFilter('auth', array('except' => array('index', 'show')));
-		$this->beforeFilter('authorised', array('only' => array('update', 'delete')));
+		$this->beforeFilter('adminOnly', array('only' => array('destroy')));
 	}
 
 	/**
