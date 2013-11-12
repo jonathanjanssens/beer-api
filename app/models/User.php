@@ -49,4 +49,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
+	public static function auth() {
+        $userId = AccessToken::where('token', '=', Request::header('access_token'))->first()['id'];
+        return self::find($userId);
+    }
+
 }

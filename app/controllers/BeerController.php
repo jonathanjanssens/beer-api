@@ -42,7 +42,8 @@ class BeerController extends \BaseController {
 				return $response->showSuccess();
 			}
 			else {
-				// $error = new ErrorResponse()
+				$response = Responder::error(500);
+				return $response->returnError();
 			}
 		}
 		$error = Responder::error(4000);
