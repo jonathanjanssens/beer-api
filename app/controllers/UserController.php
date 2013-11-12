@@ -76,7 +76,7 @@ class UserController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		if($id != User::auth()[$id]) {
+		if($id != User::auth()->id) {
 			return Responder::error(4031)->showError();
 		}
 		if(is_numeric($id)){
