@@ -64,6 +64,13 @@ Route::filter('auth', function()
     }
 });
 
+Route::filter('adminOnly', function()
+{
+    if(User::auth()['admin_level'] < 1){
+        return Responder::error(4031)->showError();
+    }
+});
+
 
 Route::filter('auth.basic', function()
 {

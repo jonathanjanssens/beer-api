@@ -5,6 +5,7 @@ class ReviewController extends \BaseController {
 	function __construct()
 	{
 		$this->beforeFilter('auth', array('except' => array('index', 'show')));
+		$this->beforeFilter('authorised', array('only' => array('update')));
 	}
 
 	/**
@@ -94,19 +95,21 @@ class ReviewController extends \BaseController {
 		if(!$review) {
 			return Responder::error(4040)->globalMessage('Cannot edit a review that does not exist')->showError();
 		}
-		if($review['user_id'] || User::auth()['admin_level'] != 0) {
+		if($review['user_id'] == User::auth()['id'] || User::auth()['admin_level'] != 0) {
 			try {
 				$updates = Input::all();
 				$review->update($updates);
-				$review = Review::find($id);
-				$newOverall = number_format(($review->smell + $review->feel + $review->taste) / 3, 2);
-				$review->update(array('overall' => $newOverall));
-			}catch(Exception $e) {
-				$error = Responder::error(4005);
-				return $error->showError();
+			} catch(Exception $e) {
+				return Responder::error(4005)->showError();
 			}
 		}
-		return Responder::success()->globalMessage('Review updated successfully')->showSuccess();// no authorisation
+		else {
+			return Responder::error(4031)->showError();
+		}
+		$review = Review::find($id);
+		$newOverall = number_format(($review->smell + $review->feel + $review->taste) / 3, 2);
+		$review->update(array('overall' => $newOverall));
+		return Responder::success()->globalMessage('Review updated successfully')->showSuccess();
 	}
 
 	/**
